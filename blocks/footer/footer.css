@@ -5,10 +5,27 @@ footer {
 }
 
 footer .footer {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: auto;
 }
 
 footer .footer p {
   margin: 0;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+footer .footer a {
+  font-size: 11px;
+  line-height: 16px;
+  color: #616161;
+}
+
+footer .footer ul {
+  list-style: none;
+  padding: 0px;
+}
+
+footer .columns div {
+  align-items: normal
 }
