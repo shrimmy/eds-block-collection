@@ -12,8 +12,8 @@
 
 :root {
   /* colors */
-  --link-color: #035fe6;
-  --link-hover-color: #136ff6;
+  --link-color: #0067b8;
+  --link-hover-color: #0067b8;
   --background-color: white;
   --light-color: #eee;
   --dark-color: #ccc;
@@ -25,7 +25,7 @@
   --fixed-font-family: "Roboto Mono", menlo, consolas, "Liberation Mono", monospace;
 
   /* body sizes */
-  --body-font-size-m: 22px;
+  --body-font-size-m: 1rem;
   --body-font-size-s: 18px;
   --body-font-size-xs: 16px;
 
@@ -66,7 +66,7 @@ body {
   font-size: var(--body-font-size-m);
   margin: 0;
   font-family: var(--body-font-family);
-  line-height: 1.6;
+  line-height: 1.5;
   color: var(--text-color);
   background-color: var(--background-color);
   display: none;
@@ -162,14 +162,16 @@ button {
   text-align: center;
   font-style: normal;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   color: var(--background-color);
   background-color: var(--link-color);
-  margin: 16px 0;
+  /* margin: 16px 0; */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-radius: 30px;
+  /*border-radius: 30px;*/
+  border-radius: .125rem;
 }
 
 a.button:hover,
@@ -178,6 +180,7 @@ button:hover,
 button:focus {
   background-color: var(--link-hover-color);
   cursor: pointer;
+  box-shadow: 0 .125rem .25rem 0 rgba(0, 0, 0, .13), 0 0 .0625rem 0 rgba(0, 0, 0, .11);
 }
 
 button:disabled,

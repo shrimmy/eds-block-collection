@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(278px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-gap: 16px;
 }
 
@@ -22,6 +22,11 @@
 
 .cards .cards-card-body > *:first-child {
   margin-top: 0;
+}
+
+.cards .cards-card-body > *:last-child {
+  bottom: 0;
+  left: 0;
 }
 
 .cards > ul > li img {
