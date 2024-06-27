@@ -31,3 +31,23 @@
     order: unset;
   }
 }
+
+.columns.horizontal img {
+  width: 40px;
+  aspect-ratio: auto 40 / 40;
+  align-self: center;
+}
+
+.columns.horizontal p {
+  text-align: center;
+  margin: 0px;
+}
+
+.columns.horizontal a.button {
+  background-color: transparent;
+  color: #0067b8;
+  font-weight: 600 !important;
+  font-size: 1rem;
+  margin: 0px;
+  text-decoration: underline;
+}
