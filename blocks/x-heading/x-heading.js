@@ -16,6 +16,9 @@ export default async function decorate(block) {
   }
   const xHeading = document.createElement('x-heading');
   const h2Element = document.createElement('h2');
+  h2Element.onclick = () => {
+    alert('Dummy behavior for x-heading');
+  };
   h2Element.setAttribute('slot', 'title');
   h2Element.innerHTML = text;
   xHeading.appendChild(h2Element);
