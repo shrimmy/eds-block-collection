@@ -1,15 +1,6 @@
 export default async function decorate(block) {
-  // Extract the items
-  // const items = Array.from(block.querySelectorAll('div > div')).map(div => {
-  //   const linkElement = div.querySelector('a');
-  //   const imgElement = div.querySelector('img');
-  //   return {
-  //     name: linkElement ? linkElement.textContent : '',
-  //     link: linkElement ? linkElement.href : '',
-  //     imgSrc: imgElement ? imgElement.src : ''
-  //   };
-  // });
 
+  // Extract the content data
   const items = [];
   [...block.children].forEach((row) => {
     const anchor = row.querySelector('a');
@@ -25,14 +16,16 @@ export default async function decorate(block) {
     }
   });
 
+  // debug
   console.log(items);
 
+  // Create the web component and set the content data
   const linkList = new LinkList();
   const ulElement = document.createElement('ul');
   ulElement.setAttribute('slot', 'links');
   for (const item of items) {
     const linkElement = document.createElement('li');
-    linkElement.style.marginLeft = '2rem';
+    linkElement.style.marginLeft = '2rem'; // There has to be a better way to do this
     const anchor = document.createElement('a');
     anchor.href = item.link;
     const div = document.createElement('div');
@@ -43,8 +36,6 @@ export default async function decorate(block) {
       const img = document.createElement('img');
       img.src = item.imgSrc;
       img.alt = item.imgAlt;
-      // img.style.width = '40em';
-      // img.style.height = '40em';
       img.ariaHidden = true;
       anchor.appendChild(img);
       anchor.appendChild(div);
@@ -55,6 +46,10 @@ export default async function decorate(block) {
   block.replaceWith(linkList);
 };
 
+
+/***************************************************************/
+/* HACK: This is a workaround to get the web component to work */
+/***************************************************************/
 
 //// CASCADE LINK LIST EMBED ////
 

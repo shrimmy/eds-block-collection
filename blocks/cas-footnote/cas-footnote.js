@@ -1,12 +1,7 @@
-
-function hasWrapper(el) {
-    return !!el.firstElementChild && window.getComputedStyle(el.firstElementChild).display === 'block';
-}
-
 export default async function decorate(block) {
 
+  // extract the content
   const ul = document.createElement('ul');
-
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {
         const li = document.createElement('li');
@@ -15,19 +10,20 @@ export default async function decorate(block) {
     });
   });
 
-  // clear out the block
-  block.innerHTML = '';
-
-    // add the footnote component
+  // add the footnote component
   const footnote = new CascadeFootnote();
   const footnoteList = document.createElement('div');
   footnoteList.setAttribute('slot', 'list');
   footnoteList.appendChild(ul);
   footnote.appendChild(footnoteList);
 
-  block.appendChild(footnote);
-
+  // replace the block with the footnote component
+  block.replaceWith(footnote);
 }
+
+/***************************************************************/
+/* HACK: This is a workaround to get the web component to work */
+/***************************************************************/
 
 /// EMBED THE SCRIPT FROM THE FOOTNOTE COMPONENT
 /// *********************************************
