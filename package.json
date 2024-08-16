@@ -6,7 +6,8 @@
   "scripts": {
     "lint:js": "eslint .",
     "lint:css": "stylelint 'blocks/**/*.css' 'styles/*.css'",
-    "lint": "npm run lint:js && npm run lint:css"
+    "lint": "npm run lint:js && npm run lint:css",
+    "copy:components": "mkdir -p ./web-components && find  node_modules/@ms-cascade/cascade-web-components/components -mindepth 1 -maxdepth 1 -type d | xargs -I {} sh -c 'cp {}/index.js ./web-components/$(basename {}).js'"
   },
   "repository": {
     "type": "git",

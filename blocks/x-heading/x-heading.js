@@ -16,10 +16,10 @@ export default async function decorate(block) {
   }
 
   const xHeading = new XHeading();
-  //const xHeading = document.createElement('x-heading');
+  // const xHeading = document.createElement('x-heading');
   const h2Element = document.createElement('h2');
   h2Element.onclick = () => {
-    alert('Dummy behavior for x-heading - ' + text);
+    alert(`Dummy behavior for x-heading - ${text}`);
   };
   h2Element.setAttribute('slot', 'title');
   h2Element.innerHTML = text;
@@ -27,7 +27,7 @@ export default async function decorate(block) {
 
   // clear out the block
   block.innerHTML = '';
-  
+
   // add the web component
   block.appendChild(xHeading);
 }
