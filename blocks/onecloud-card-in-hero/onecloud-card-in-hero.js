@@ -6,7 +6,7 @@ export default function decorate(block) {
   textBlock.setAttribute('slot', 'card-in-hero__top');
   card.appendChild(textBlock);
 
-  // // why is this not in the web-components package?
+  // why is this not in the web-components package?
   // const badge = new onecloudwebcomponents.Badge();
   // badge.setAttribute('slot', 'text-block__badge');
   // textBlock.append(badge);
@@ -27,10 +27,10 @@ export default function decorate(block) {
   p.innerText = 'Our mission is to empower every person and every organization on the planet to achieve more.';
   textBlock.append(p);
 
-  block.append(card);
+  //block.append(card);
 
 
-  const html = `
+  const card_in_hero_html = `
   <reimagine-card-in-hero card-base="glass">
     <reimagine-text-block slot="card-in-hero__top">
       <reimagine-badge slot="text-block__badge">
@@ -57,7 +57,9 @@ export default function decorate(block) {
   </reimagine-card-in-hero>
   `
   const htmlBlock = document.createElement('div');
-  htmlBlock.innerHTML = html;
+  htmlBlock.innerHTML = card_in_hero_html;
 
-  block.append(htmlBlock);
+  block.replaceWith(htmlBlock);
+
+  
 }
