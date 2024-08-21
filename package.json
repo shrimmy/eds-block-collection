@@ -7,7 +7,8 @@
     "lint:js": "eslint .",
     "lint:css": "stylelint 'blocks/**/*.css' 'styles/*.css'",
     "lint": "npm run lint:js && npm run lint:css",
-    "copy:components": "cp -r node_modules/@ms-onecloud/onecloud-web-components/dist/onecloud/web-components/es/components/* web-components/",
+    "copy:es": "cp -r node_modules/@ms-onecloud/onecloud-web-components/dist/onecloud/web-components/es/* web-components/es/",
+    "copy:components": "cp -r node_modules/@ms-onecloud/onecloud-web-components/dist/onecloud/web-components/es/components/* web-components/es/",
     "copy:umd": "cp -r node_modules/@ms-onecloud/onecloud-web-components/dist/onecloud/web-components/umd/onecloud-web-components.umd.js web-components/onecloud-web-components.umd.js",
     "copy:styles": "cp -r node_modules/@ms-onecloud/moray-reimagine-wc-theming/dist/css/*.css web-components/styles"
   },

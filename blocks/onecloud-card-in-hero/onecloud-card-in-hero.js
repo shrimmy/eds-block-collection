@@ -1,6 +1,25 @@
+
+function createButton(label, appearance) {
+  const button = new onecloudwebcomponents.Button();
+  button.setAttribute('size', 'large');
+  button.setAttribute('appearance', appearance);
+  button.setAttribute('shape', 'rounded');
+  button.innerHTML = `<span slot="button__text">${label}</span>`;
+  return button;
+}
+
 export default function decorate(block) {
 
+  const paragraph = block.querySelector('p');
+  const paragraphText = paragraph.innerText;
+  const header = document.querySelector('h1, h2, h3, h4');
+  const headerText = header.innerText;
+  header.remove(); // will be replaced with a span
+  const links = block.querySelectorAll('a');
+  links.forEach(link => link.remove());
+
   const card = new onecloudwebcomponents.CardInHero();
+  card.setAttribute('card-base', 'glass');
 
   const textBlock = new onecloudwebcomponents.TextBlock();
   textBlock.setAttribute('slot', 'card-in-hero__top');
@@ -11,35 +30,53 @@ export default function decorate(block) {
   // badge.setAttribute('slot', 'text-block__badge');
   // textBlock.append(badge);
 
-  const icon = new onecloudwebcomponents.Icon();
-  icon.setAttribute('icon', 'heart');
-  icon.setAttribute('size', '4xlarge');
-  //badge.append(icon);
-  card.append(icon);
+  // badge is not in the web component package, so we have to create a placeholder
+  const badge = document.createElement('anything');
+  badge.setAttribute('slot', 'text-block__badge');
+  textBlock.append(badge);
 
+  const icon = new onecloudwebcomponents.Icon();
+  icon.setAttribute('icon', 'bot');
+  //icon.setAttribute('size', '4xlarge');
+  card.append(icon);
+  
+  badge.append(icon);
+  
   const span = document.createElement('span');
   span.setAttribute('slot', 'text-block__heading');
-  span.innerText = 'Empowering others';
+  span.innerText = headerText;
   textBlock.append(span);
 
-  const p = document.createElement('p');
-  p.setAttribute('slot', 'text-block__content');
-  p.innerText = 'Our mission is to empower every person and every organization on the planet to achieve more.';
-  textBlock.append(p);
+  paragraph.setAttribute('slot', 'text-block__content');
+  textBlock.append(paragraph);
 
-  //block.append(card);
+  const buttonGroup = new onecloudwebcomponents.ButtonGroup();
+  buttonGroup.setAttribute('slot', 'card-in-hero__bottom');
+  links.forEach(link => {
+    var appearance = 'button--secondary';
+    if (links[0] === link) {
+      appearance = 'button--primary';
+    }
+    const button = createButton(link.innerText, appearance);
+    button.setAttribute('href', link.getAttribute('href'));
+    buttonGroup.append(button);
+  });
+  
+  card.append(buttonGroup);
+
+  block.append(card);
+  
 
 
   const card_in_hero_html = `
   <reimagine-card-in-hero card-base="glass">
     <reimagine-text-block slot="card-in-hero__top">
       <reimagine-badge slot="text-block__badge">
-        <reimagine-icon icon="heart"></reimagine-icon>
+        <reimagine-icon icon="bot"></reimagine-icon>
       </reimagine-badge>
-      <span slot="text-block__heading">Empowering others</span>
+      <span slot="text-block__heading">${headerText}</span>
       <p slot="text-block__content">
-        Our mission is to empower every person and every organization on the
-        planet to achieve more.
+        ${paragraphText}
       </p>
     </reimagine-text-block>
     <reimagine-button-group slot="card-in-hero__bottom">
@@ -56,10 +93,12 @@ export default function decorate(block) {
     </reimagine-button-group>
   </reimagine-card-in-hero>
   `
+
+
   const htmlBlock = document.createElement('div');
   htmlBlock.innerHTML = card_in_hero_html;
 
-  block.replaceWith(htmlBlock);
+  block.append(htmlBlock);
 
   
 }
