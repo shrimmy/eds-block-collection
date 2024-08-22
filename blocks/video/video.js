@@ -136,7 +136,7 @@ export default async function decorate(block) {
       if (entries.some((e) => e.isIntersecting)) {
         observer.disconnect();
         const playOnLoad = autoplay && !prefersReducedMotion.matches;
-        loadVideoEmbed(block, link, playOnLoad);
+        loadVideoEmbed(block, link, playOnLoad, autoplay);
       }
     });
     observer.observe(block);
