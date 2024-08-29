@@ -35,6 +35,6 @@
   "dependencies": {
     "@adobe/aem-block-collection": "file:",
     "@ms-onecloud/moray-reimagine-wc-theming": "^11.0.2",
-    "@ms-onecloud/onecloud-web-components": "^1.12.0"
+    "@ms-onecloud/onecloud-web-components": "^1.14.0"
   }
 }
